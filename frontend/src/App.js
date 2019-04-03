@@ -8,7 +8,6 @@ import List from './components/list';
 import Add from './components/add'
 import Edit from './components/edit'
 import View from './components/view'
-import State from './components/state'
 import Login from './components/login'
 import Signout from './components/signout'
 import Signup from './components/signup';
@@ -22,12 +21,11 @@ class App extends Component {
           <Route path='/singout/' component={Signout} />
           <Route path='/login/' component={Login} />
 
-          <Route path='/view/:id' component={Add} />
+          {/* <Route path='/view/:id' component={Add} />
           <Route path='/edit/:id' component={View} />
           <Route path='/add/:id' component={Add} />
-          <Route path='' component={List} />
+          <Route path='' component={List} /> */}
         </Switch>
-        <State />
       </div>
     );
   }
