@@ -21,7 +21,7 @@ export default class login extends Component {
 
         this.axios.post('login/', data).then(d => {
             const token = d.data.token
-            localStorage['token'] = `token ${d.data.token}`
+            localStorage['token'] = `token ${token}`
             this.props.history.push('/list/')
         }).catch(e=>{
             this.setState({

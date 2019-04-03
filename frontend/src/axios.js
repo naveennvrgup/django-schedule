@@ -10,7 +10,7 @@ export default () => {
     return axios.create({
         baseURL: burl,
         headers: {
-            authorization: sessionStorage['token'],
+            authorization: localStorage['token'],
         }
     });
 }

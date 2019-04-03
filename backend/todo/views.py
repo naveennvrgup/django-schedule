@@ -31,10 +31,16 @@ def list_view(req):
     if req.method=='GET':
         sdata = TodoSerializer(Todo.objects.all(), many=True)
         return Response(sdata.data)
-    
+        
     data = JSONParser().parse(req)
-    print(data)
-    return Response(data)
+    todo = Todo.objects.create(
+        task=data['task'],
+        description=data['description'],
+        start=data['start'],
+        user=req.user
+    )
+    sdata = TodoSerializer(todo)
+    return Response(sdata.data)
 
 
 
