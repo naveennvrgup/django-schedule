@@ -29,7 +29,7 @@ def signup_view(req):
 @api_view(['get', 'post'])
 def list_view(req):
     if req.method=='GET':
-        sdata = TodoSerializer(Todo.objects.all(), many=True)
+        sdata = TodoSerializer(req.user.todos.all(), many=True)
         return Response(sdata.data)
 
     data = JSONParser().parse(req)
