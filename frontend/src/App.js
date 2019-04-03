@@ -17,8 +17,8 @@ class App extends Component {
     return (
       <div className="App shadow p-5">
         <Switch>
-          <Route path='/view/:id' component={Add} />
-          <Route path='/edit/:id' component={View} />
+          <Route path='/view/:id' component={View} />
+          <Route path='/edit/:id' component={Add} />
           <Route path='/add/' component={Add} />
           <Route path='/list/' component={List} />
 

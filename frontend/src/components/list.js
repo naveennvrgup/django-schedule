@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fuser from '../axios'
+import {Link} from 'react-router-dom'
 
 export default class list extends Component {
     axios = fuser()
@@ -24,13 +25,22 @@ export default class list extends Component {
 
     render() {
         const todos = this.state.todos.map((ele,i) => 
-                <div className="todo d-flex mt-3 align-items-center">
+                <div key={i} className="todo d-flex mt-2 align-items-center">
                     <div>
                         {i+1}
                     </div>
-                    <div className='mx-3 flex-grow-1'>
-                        <div>{ele.task}</div>
-                        <div className="text-black-50">{ele.description}</div>
+                    <div className='mx-4 flex-grow-1'>
+                        <div>
+                            <Link to={`/view/${ele.id}/`}>{ele.task}</Link>
+                        </div>
+                        <div className="text-black-50">{ele.description.slice(0,20)}</div>
+                    </div>
+                    <div className='btns'>
+                        <button
+                            onClick={this._login}
+                            className="btn btn-sm btn-success mr-2 mt-3">
+                            <i className="fa fa-check"></i>
+                        </button>
                     </div>
                 </div>
             )
@@ -40,8 +50,7 @@ export default class list extends Component {
                 <h3>Tasks Schedule:</h3>
                 <div className="mt-3">
                     <div className="d-flex 
-                    text-cite
-                    justify-content-between align-items-center">
+                        justify-content-between align-items-center">
                         <div>
                             <span>Total tasks: </span>
                             {this.state.todos.length}
