@@ -12,4 +12,5 @@ urlpatterns = [
     # todo
     path('todo/', list_view),
     path('todo/<int:id>/', show_view),
+    path('completed/<int:id>/', completed_view),
 ]

@@ -21,7 +21,7 @@ export default class view extends Component {
 
     render() {
         const time = this.state.start || ''
-        
+
         return (
             <div>
                 <button
@@ -38,19 +38,21 @@ export default class view extends Component {
                         <span>Description: </span>{this.state.description}
                     </div>
                     <div>
-                        <span>Date: </span>{time.slice(0,10)}
+                        <span>Date: </span>{time.slice(0, 10)}
                     </div>
                     <div>
-                        <span>Time: </span>{time.slice(11,16)}
+                        <span>Time: </span>{time.slice(11, 16)}
                     </div>
                 </div>
                 <div className="text-center mt-4">
-                    <button className="btn btn-sm mr-3 btn-primary">
+                    <button
+                        onClick={() => this.props.history.push(`/edit/${this.id}/`)}
+                        className="btn btn-sm mr-3 btn-primary">
                         <i className="fa fa-pen"></i> Edit
                     </button>
-                    <button 
-                    onClick={this._delete}
-                    className="btn btn-sm btn-danger">
+                    <button
+                        onClick={this._delete}
+                        className="btn btn-sm btn-danger">
                         <i className="fa fa-trash"></i> Delete
                     </button>
                 </div>
@@ -61,7 +63,7 @@ export default class view extends Component {
     _delete = e => {
         e.preventDefault()
         this.axios.delete(`/todo/${this.id}`)
-            .then(d=>{
+            .then(d => {
                 this.props.history.goBack()
             })
     }

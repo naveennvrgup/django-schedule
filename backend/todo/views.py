@@ -59,6 +59,17 @@ def show_view(req, id):
     # post
     data = JSONParser().parse(req)
     todo = Todo.objects.get(pk=id)
+    todo.task = data['task'] 
+    todo.description = data['description'] 
+    todo.start = data['start'] 
+    todo.save()
+    sdata = TodoSerializer(todo)
+    return Response(sdata.data)
+
+@api_view(['post'])
+def completed_view(req,id):
+    data = JSONParser().parse(req)
+    todo = Todo.objects.get(pk=id)
     todo.completed = data['completed']
     todo.save()
     sdata = TodoSerializer(todo)

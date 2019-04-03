@@ -82,7 +82,7 @@ export default class list extends Component {
     }
 
     _done = (e,id, completed) => {
-        this.axios.post(`todo/${id}/`,{
+        this.axios.post(`completed/${id}/`,{
             completed
         }).then(d=>{
             this.get_todos()
