@@ -9,23 +9,25 @@ import Add from './components/add'
 // import Edit from './components/edit'
 import View from './components/view'
 import Login from './components/login'
-import Signout from './components/signout'
 import Signup from './components/signup';
+import Proute from './components/proute';
+
+const Pro = () =>
+  <Proute>
+    <Route path='/view/:id' component={View} />
+    <Route path='/edit/:id' component={Add} />
+    <Route path='/add/' component={Add} />
+    <Route path='/list/' component={List} />
+  </Proute>
 
 class App extends Component {
   render() {
     return (
       <div className="App shadow p-5">
         <Switch>
-          <Route path='/view/:id' component={View} />
-          <Route path='/edit/:id' component={Add} />
-          <Route path='/add/' component={Add} />
-          <Route path='/list/' component={List} />
-
-          <Route path='/singout/' component={Signout} />
           <Route path='/signup/' component={Signup} />
-          <Route path='/' component={Login} />
-
+          <Route path='/login/' component={Login} />
+          <Route path='/' component={Pro} />
         </Switch>
       </div>
     );

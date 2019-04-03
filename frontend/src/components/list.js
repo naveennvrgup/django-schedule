@@ -47,7 +47,14 @@ export default class list extends Component {
 
         return (
             <div>
-                <h3>Tasks Schedule:</h3>
+                <div className="d-flex justify-content-between align-items-center">
+                    <h3>Tasks Schedule:</h3>
+                    <button
+                        onClick={this._signout}
+                        className="btn btn-sm mb-4 mr-3 btn-danger">
+                        <i className="fa fa-power-off"></i>
+                    </button>
+                </div>
                 <div className="mt-3">
                     <div className="d-flex 
                         justify-content-between align-items-center">
@@ -69,6 +76,11 @@ export default class list extends Component {
                 </div>
             </div>
         )
+    }
+    _signout = e => {
+        e.preventDefault()
+        localStorage.removeItem('token')
+        this.props.history.push('/login/')
     }
 
     get_todos = () => {

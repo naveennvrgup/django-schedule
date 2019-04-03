@@ -3,6 +3,8 @@ import fuser from '../axios';
 
 export default class add extends Component {
     axios = fuser()
+    state = {}
+
     add_task = e => {
         e.preventDefault()
         console.log(this.date.value, this.time.value)
@@ -18,7 +20,6 @@ export default class add extends Component {
             this.props.history.push('/list/')
         })
     }
-
     componentDidMount = () => {
         this.id = this.props.match.params['id']
 
@@ -31,8 +32,11 @@ export default class add extends Component {
 
         this.axios.get(`/todo/${this.id}/`)
             .then(d=>{
+                this.setState({
+                    ...this.state,
+                    id: d.data.id
+                })
                 d = d.data
-                console.log(d);
                 this.task.value = d.task 
                 this.des.value = d.description
                 this.date.value = d.start.slice(0,10)
@@ -49,7 +53,7 @@ export default class add extends Component {
                     className="btn btn-sm mb-4 mr-3 btn-warning">
                     <i className="fa fa-arrow-left"></i>
                 </button>
-                <h3>Add new Task</h3>
+                <h3>{this.state.id? `Edit Task ${this.state.id}`:'Add new Task'}</h3>
                 <form className="mt-4">
                     <input type="text"
                         ref={e => this.task = e}
