@@ -9,8 +9,8 @@ if (process.env.NODE_ENV === 'production') {
 export default () => {
     return axios.create({
         baseURL: burl,
-        // headers: {
-        //     authorization: sessionStorage['token'],
-        // }
+        headers: {
+            authorization: sessionStorage['token'],
+        }
     });
 }
