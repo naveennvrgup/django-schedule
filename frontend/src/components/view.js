@@ -9,7 +9,7 @@ export default class view extends Component {
     componentDidMount = () => {
         this.id = this.props.match.params['id']
 
-        this.axios.get(`/todo/${this.id}`)
+        this.axios.get(`/todo/${this.id}/`)
             .then(d => {
                 this.setState({
                     ...this.state,
@@ -62,7 +62,7 @@ export default class view extends Component {
 
     _delete = e => {
         e.preventDefault()
-        this.axios.delete(`/todo/${this.id}`)
+        this.axios.delete(`/todo/${this.id}/`)
             .then(d => {
                 this.props.history.goBack()
             })
