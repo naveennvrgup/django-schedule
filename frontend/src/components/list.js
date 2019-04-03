@@ -12,20 +12,24 @@ export default class list extends Component {
         this.get_todos()
     }
 
-    get_todos = () => {
-        this.axios('todo/')
-            .then(d => {
-                console.log(d.data)
-                this.setState({
-                    ...this.state,
-                    todos: d.data
-                })
-            })
-    }
 
     render() {
+        const checkbtn = (id) => 
+            <button
+                onClick={e => this._done(e,id,true)}
+                className="btn btn-sm btn-success mr-2 mt-3">
+                <i className="fa fa-check"></i>
+            </button>
+        
+        const uncheckbtn = (id) => 
+            <button
+                onClick={e => this._done(e,id,false)}
+                className="btn btn-sm btn-danger mr-2 mt-3">
+                <i className="fa fa-times"></i>
+            </button>
+
         const todos = this.state.todos.map((ele,i) => 
-                <div key={i} className="todo d-flex mt-2 align-items-center">
+                <div key={i} className={`todo d-flex mt-2 align-items-center ${ele.completed? 'done':''}` }>
                     <div>
                         {i+1}
                     </div>
@@ -36,11 +40,7 @@ export default class list extends Component {
                         <div className="text-black-50">{ele.description.slice(0,20)}</div>
                     </div>
                     <div className='btns'>
-                        <button
-                            onClick={this._login}
-                            className="btn btn-sm btn-success mr-2 mt-3">
-                            <i className="fa fa-check"></i>
-                        </button>
+                        {ele.completed?uncheckbtn(ele.id):checkbtn(ele.id)}
                     </div>
                 </div>
             )
@@ -69,5 +69,23 @@ export default class list extends Component {
                 </div>
             </div>
         )
+    }
+
+    get_todos = () => {
+        this.axios('todo/')
+            .then(d => {
+                this.setState({
+                    ...this.state,
+                    todos: d.data
+                })
+            })
+    }
+
+    _done = (e,id, completed) => {
+        this.axios.post(`todo/${id}/`,{
+            completed
+        }).then(d=>{
+            this.get_todos()
+        })
     }
 }

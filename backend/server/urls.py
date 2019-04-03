@@ -11,5 +11,5 @@ urlpatterns = [
     path('signup/', signup_view),
     # todo
     path('todo/', list_view),
-    path('todo/<int:id>', show_view),
+    path('todo/<int:id>/', show_view),
 ]

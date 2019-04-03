@@ -31,7 +31,7 @@ def list_view(req):
     if req.method=='GET':
         sdata = TodoSerializer(Todo.objects.all(), many=True)
         return Response(sdata.data)
-        
+
     data = JSONParser().parse(req)
     todo = Todo.objects.create(
         task=data['task'],
@@ -58,6 +58,8 @@ def show_view(req, id):
 
     # post
     data = JSONParser().parse(req)
-    todo = Todo.objects.create(**data)
+    todo = Todo.objects.get(pk=id)
+    todo.completed = data['completed']
+    todo.save()
     sdata = TodoSerializer(todo)
     return Response(sdata.data)
