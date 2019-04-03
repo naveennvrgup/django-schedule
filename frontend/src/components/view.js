@@ -48,11 +48,21 @@ export default class view extends Component {
                     <button className="btn btn-sm mr-3 btn-primary">
                         <i className="fa fa-pen"></i> Edit
                     </button>
-                    <button className="btn btn-sm btn-danger">
+                    <button 
+                    onClick={this._delete}
+                    className="btn btn-sm btn-danger">
                         <i className="fa fa-trash"></i> Delete
                     </button>
                 </div>
             </div>
         )
+    }
+
+    _delete = e => {
+        e.preventDefault()
+        this.axios.delete(`/todo/${this.id}`)
+            .then(d=>{
+                this.props.history.goBack()
+            })
     }
 }
