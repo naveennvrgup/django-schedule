@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+    font-family: 'raleway';
+}
+
+.App {
+    max-width: 500px;
+    min-height: 80vh;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 1em;
+}
+
+.state {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    padding: 2em;
+    background: pink;
+    span{
+        font-weight: bold;
+    }
+}
+
+// .nbtn{
+//     outline: none;
+//     border: none;
+//     padding: 5px 10px;
+//     border-radius: 5px;
+//     background: ddd;
+//     box-shadow: 5px 5px 15px -3px rgba($color: #000000, $alpha: 0.3);
+// }
