@@ -7,7 +7,7 @@ from todo.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     # auth
-    path('login/', obtain_auth_token),
+    path('god/', obtain_auth_token),
     path('signup/', signup_view),
     # todo
     path('todo/', list_view),

@@ -8,7 +8,6 @@ from .models import *
 
 
 @api_view(['post'])
-@permission_classes([AllowAny])
 def signup_view(req):
     data = JSONParser().parse(req)
     try:
@@ -27,10 +26,17 @@ def signup_view(req):
         return Response({'error': 'something went wrong'})
 
 
-@api_view(['get'])
+@api_view(['get', 'post'])
 def list_view(req):
-    sdata = TodoSerializer(Todo.objects.all(), many=True)
-    return Response(sdata.data)
+    if req.method=='GET':
+        sdata = TodoSerializer(Todo.objects.all(), many=True)
+        return Response(sdata.data)
+    
+    data = JSONParser().parse(req)
+    print(data)
+    return Response(data)
+
+
 
 
 @api_view(['get', 'post', 'delete'])

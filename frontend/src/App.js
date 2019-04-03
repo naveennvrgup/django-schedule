@@ -17,14 +17,15 @@ class App extends Component {
     return (
       <div className="App shadow p-5">
         <Switch>
-          <Route path='/singup/' component={Signup} />
-          <Route path='/singout/' component={Signout} />
-          <Route path='/login/' component={Login} />
-
           {/* <Route path='/view/:id' component={Add} />
           <Route path='/edit/:id' component={View} />
-          <Route path='/add/:id' component={Add} />
-          <Route path='' component={List} /> */}
+          <Route path='/add/:id' component={Add} /> */}
+          <Route path='/list/' component={List} />
+
+          {/* <Route path='/singout/' component={Signout} /> */}
+          <Route path='/signup/' component={Signup} />
+          <Route path='/' component={Login} />
+
         </Switch>
       </div>
     );
