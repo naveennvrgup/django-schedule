@@ -1,15 +1,29 @@
-# django-schedule
+# Django Schedule  
 
-cd into backend
+* This repo is meant to a take home assignment for a internship interview process.
+* This is full stack application is built with django in backend and react.js in frontend.
+* It shows the REST API functionality in the backend and state management with react in the frontend.
 
-create a virtual env
+### Setup instructions
 
-install all the dependencies in the requirements.txt
+cd into backend  
 
-migrate
+    cd backend
+    
+create a virtual env    
+  
+    virtualenv env -p python3.5  
 
-runserver
+install all the dependencies in the requirements.txt    
+ 
+    pip3 install requirements.txt
 
-you can install postgres by following:
+migrate the migrations
+    
+    ./manage.py migrate
 
-https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04#creating-a-python-virtual-environment-for-your-project
+start the django server
+
+    ./manage.py runserver
+  
+you can install postgres by following:  [link](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04#creating-a-python-virtual-environment-for-your-project)
