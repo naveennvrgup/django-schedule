@@ -13,6 +13,7 @@ cd into backend
 create a virtual env    
   
     virtualenv env -p python3.5  
+    source env/bin/activate    
 
 install all the dependencies in the requirements.txt    
  
